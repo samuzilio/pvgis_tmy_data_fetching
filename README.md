@@ -1,4 +1,5 @@
 # PVGIS TMY Data Fetching
+## Overview
 This repository contains a script to fetch [PVGIS TMY](https://joint-research-centre.ec.europa.eu/photovoltaic-geographical-information-system-pvgis/pvgis-tools/pvgis-typical-meteorological-year-tmy-generator_en) data for given set of coordinates. User can select one of the following variables and calculate its mean value over a specified time period (at least 10 years between 2005-2020):
 
 - G(h) [W/m2] - Global horizontal irradiance
