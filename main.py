@@ -24,7 +24,7 @@ def main():
     ):
         identifier, latitude, longitude = row.id, row.latitude, row.longitude
         data, months_selected, inputs, meta = get_pvgis_tmy_data(
-            latitude, longitude, startyear=2010, endyear=2020
+            latitude, longitude, startyear=2010, endyear=2020 # Specify the first and the last year of the time period (the period should be >= 10 years)
         )
         variable_values = data[selected_variable]
         mean_variable_values = variable_values.mean()
