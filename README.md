@@ -22,6 +22,7 @@ This repository contains a script to fetch [PVGIS TMY](https://joint-research-ce
 <br>
 <br>
 
+## Instructions
 Follow these steps to set up and run the script on your local machine:
 
 **1**. Clone the repository:
