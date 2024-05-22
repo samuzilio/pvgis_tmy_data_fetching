@@ -40,8 +40,8 @@ def get_pvgis_tmy_data(
     params["usehorizon"] = int(usehorizon)
     # If `usehorizon` is set to True:
     # you can provide your own horizon information
-    if os.path.isfile("own_horizon_information.txt"):
-        with open("own_horizon_information.txt", "r") as file:
+    if os.path.isfile("your_own_horizon_information.txt"):
+        with open("your_own_horizon_information.txt", "r") as file:
             userhorizon = [float(value.strip()) for value in file.readlines() if value.strip()]
         params["userhorizon"] = ",".join(map(str, userhorizon))
     # or you can use PVGIS built-in horizon information
