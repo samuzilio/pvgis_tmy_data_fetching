@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 import io
+import os
 
 # Provide API entry point for PVGIS 5.2
 URL = "https://re.jrc.ec.europa.eu/api/v5_2/"
@@ -27,7 +28,7 @@ def get_pvgis_tmy_data(
     latitude,
     longitude,
     outputformat="csv",
-    usehorizon=True,
+    usehorizon=True, # Set to True to include effects of horizon, False to exclude
     userhorizon=None,
     startyear=None,
     endyear=None,
@@ -37,9 +38,17 @@ def get_pvgis_tmy_data(
 ):
     params = {"lat": latitude, "lon": longitude, "outputformat": outputformat}
     params["usehorizon"] = int(usehorizon)
-    params["userhorizon"] = (
-        ",".join(map(str, userhorizon)) if userhorizon is not None else None
-    )
+    # If `usehorizon` is set to True:
+    # you can provide your own horizon information
+    if os.path.isfile("own_horizon_information.txt"):
+        with open("own_horizon_information.txt", "r") as file:
+            userhorizon = [float(value.strip()) for value in file.readlines() if value.strip()]
+        params["userhorizon"] = ",".join(map(str, userhorizon))
+    # or you can use PVGIS built-in horizon information
+    else:
+        params["userhorizon"] = (
+            ",".join(map(str, userhorizon)) if userhorizon is not None else None
+        )
     params["startyear"] = startyear
     params["endyear"] = endyear
     res = requests.get(url + "tmy", params=params, timeout=timeout)
