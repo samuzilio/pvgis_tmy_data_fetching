@@ -39,11 +39,24 @@ def get_pvgis_tmy_data(
     params = {"lat": latitude, "lon": longitude, "outputformat": outputformat}
     params["usehorizon"] = int(usehorizon)
     # If `usehorizon` is set to True:
-    # you can provide your own horizon information
-    if os.path.isfile("your_own_horizon_information.txt"):
-        with open("your_own_horizon_information.txt", "r") as file:
-            userhorizon = [float(value.strip()) for value in file.readlines() if value.strip()]
-        params["userhorizon"] = ",".join(map(str, userhorizon))
+    # you can provide your own horizon information (and eventually modify this part depending on your needs)
+    if os.path.isfile("sample_horizon_information.txt"):
+        with open("sample_horizon_information.txt", "r") as file:
+            lines = file.readlines()
+            horizon_heights = []
+            i = 0
+            while i < len(lines):
+                if lines[i].startswith("Point:") and lines[i].find(f"{latitude}, {longitude}") != -1:
+                    i += 2
+                    while i < len(lines) and not lines[i].startswith("Point"):
+                        if not lines[i].startswith("-"):
+                            data = lines[i].strip().split(",")
+                            horizon_heights.append(max(0, float(data[1])))
+                        i += 1
+                else:
+                    i += 1
+
+        params["userhorizon"] = ",".join(map(str, horizon_heights))
     # or you can use PVGIS built-in horizon information
     else:
         params["userhorizon"] = (
