@@ -55,7 +55,6 @@ def get_pvgis_tmy_data(
                         i += 1
                 else:
                     i += 1
-
         params["userhorizon"] = ",".join(map(str, horizon_heights))
     # or you can use PVGIS built-in horizon information
     else:
