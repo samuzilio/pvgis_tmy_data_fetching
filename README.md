@@ -17,7 +17,7 @@ This repository contains a script to fetch [PVGIS TMY](https://joint-research-ce
 - WD10m [°] - Wind direction at 10m
 
 > [!IMPORTANT]
-> For demonstration purposes this script uses sample point data stored in a CSV file. You can replace it with your own data (in this case make sure to have the columns `id`, `latitude` and `longitude`) or modify the script.
+> For demonstration purposes this script uses i) sample point data stored in a CSV file (you can replace it with your own data, in this case make sure to have the columns `id`, `latitude` and `longitude`) ii) sample horizon information stored in a TXT file.
 
 <br>
 
