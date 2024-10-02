@@ -1,3 +1,5 @@
+# main.py
+
 import pandas as pd
 from tqdm import tqdm
 from preprocessing import VARIABLE_MAP, get_pvgis_tmy_data
