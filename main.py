@@ -2,7 +2,7 @@
 
 import pandas as pd
 from tqdm import tqdm
-from preprocessing import VARIABLE_MAP, get_pvgis_tmy_data
+from preprocessing import VARIABLE_MAP, fetch_pvgis_tmy_data
 
 def main():
     # Read point data from the CSV file
@@ -25,7 +25,7 @@ def main():
         desc="Processing locations",
     ):
         identifier, latitude, longitude = row.id, row.latitude, row.longitude
-        data, months_selected, inputs, meta = get_pvgis_tmy_data(
+        data, months_selected, inputs, meta = fetch_pvgis_tmy_data(
             latitude, longitude, startyear=2010, endyear=2020 # Specify the first and the last year of the time period (the period should be >= 10 years)
         )
         variable_values = data[selected_variable]
