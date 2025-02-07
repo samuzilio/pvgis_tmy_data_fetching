@@ -70,7 +70,7 @@ def fetch_pvgis_tmy_data(
     data, months_selected, inputs, meta = None, None, None, None
     if outputformat == "csv":
         with io.BytesIO(res.content) as src:
-            data, months_selected, inputs, meta = _parse_pvgis_tmy_data(src)
+            data, months_selected, inputs, meta = parse_fetched_pvgis_tmy_data(src)
     if map_variables:
         data = data.rename(columns=VARIABLE_MAP)
     return data, months_selected, inputs, meta
