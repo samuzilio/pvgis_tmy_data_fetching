@@ -25,8 +25,8 @@ VARIABLE_MAP = {
     "WD10m": "wind_direction",
 }
 
-# Function to get PVGIS TMY data
-def get_pvgis_tmy_data(
+# Function to fetch PVGIS TMY data
+def fetch_pvgis_tmy_data(
     latitude,
     longitude,
     outputformat="csv",
@@ -76,7 +76,7 @@ def get_pvgis_tmy_data(
     return data, months_selected, inputs, meta
 
 # Function to parse fetched PVGIS TMY data
-def _parse_pvgis_tmy_data(src):
+def parse_fetched_pvgis_tmy_data(src):
     inputs = {}
     inputs["latitude"] = float(src.readline().split(b":")[1])
     inputs["longitude"] = float(src.readline().split(b":")[1])
