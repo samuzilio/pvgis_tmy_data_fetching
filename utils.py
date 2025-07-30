@@ -10,17 +10,17 @@ URL = "https://re.jrc.ec.europa.eu/api/v5_2/"
 
 # Rename PVGIS TMY variables to more descriptive names
 VARIABLE_MAP = {
-    "G(h)": "ghi",
-    "Gb(n)": "dni",
-    "Gd(h)": "dhi",
-    "G(i)": "poa_global",
-    "Gb(i)": "poa_direct",
-    "Gd(i)": "poa_sky_diffuse",
-    "Gr(i)": "poa_ground_diffuse",
+    "G(h)": "global_horizontal_irradiance",
+    "Gb(n)": "beam_direct_irradiance",
+    "Gd(h)": "diffuse_horizontal_irradiance",
+    "G(i)": "global_irradiance_inclined_plane",
+    "Gb(i)": "beam_irradiance_inclined_plane",
+    "Gd(i)": "diffuse_irradiance_inclined_plane",
+    "Gr(i)": "reflected_irradiance_inclined_plane",
     "H_sun": "solar_elevation",
-    "T2m": "temp_air",
+    "T2m": "air_temperature",
     "RH": "relative_humidity",
-    "SP": "pressure",
+    "SP": "surface_pressure",
     "WS10m": "wind_speed",
     "WD10m": "wind_direction",
 }
@@ -82,6 +82,7 @@ def parse_fetched_pvgis_tmy_data(src):
     inputs["longitude"] = float(src.readline().split(b":")[1])
     inputs["elevation"] = float(src.readline().split(b":")[1])
     src.readline()
+    header_line = src.readline()
     months_selected = [
         {"month": month + 1, "year": int(src.readline().split(b",")[1])}
         for month in range(12)
