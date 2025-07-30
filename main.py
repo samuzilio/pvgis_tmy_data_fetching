@@ -2,7 +2,7 @@
 
 import pandas as pd
 from tqdm import tqdm
-from preprocessing import VARIABLE_MAP, fetch_pvgis_tmy_data
+from utils import VARIABLE_MAP, fetch_pvgis_tmy_data
 
 def main():
     # Read point data from the CSV file
