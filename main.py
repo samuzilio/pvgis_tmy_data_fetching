@@ -11,7 +11,7 @@ def main():
     # Prompt the user to select a variable for calculation
     while True:
         selected_variable = input(
-            "Enter the variable you want to calculate the mean for (e.g., ghi, dni, dhi, etc.): "
+            "Enter the variable you want to calculate the mean for (e.g. global_horizontal_irradiance, beam_direct_irradiance, etc.): "
         )
         if selected_variable in VARIABLE_MAP.values():
             break
